@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     
@@ -11,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="portfolio.css">
 </head>
 
-<body>
+<body> 
     <!-- Navbar Section Start-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
