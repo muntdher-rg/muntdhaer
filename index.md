@@ -1,136 +1,146 @@
-
 <!DOCTYPE html>
 <html>
-    <title>muntadher-rg</title>
-    <head>
-        <script>
-( function($) {
-  
-  $(document).ready(function() {
+<head>
     
-    var s           = $('.slider'),
-        sWrapper    = s.find('.slider-wrapper'),
-        sItem       = s.find('.slide'),
-        btn         = s.find('.slider-link'),
-        sWidth      = sItem.width(),
-        sCount      = sItem.length,
-        slide_date  = s.find('.slide-date'),
-        slide_title = s.find('.slide-title'),
-        slide_text  = s.find('.slide-text'),
-        slide_more  = s.find('.slide-more'),
-        slide_image = s.find('.slide-image img'),
-        sTotalWidth = sCount * sWidth;
-    
-    sWrapper.css('width', sTotalWidth);
-    sWrapper.css('width', sTotalWidth);
-    
-    var clickCount  = 0;
-    
-    btn.on('click', function(e) {
-      e.preventDefault();
+    <title>MyPortfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="portfolio.css">
+</head>
 
-      if( $(this).hasClass('next') ) {
-        
-        ( clickCount < ( sCount - 1 ) ) ? clickCount++ : clickCount = 0;
-      } else if ( $(this).hasClass('prev') ) {
-        
-        ( clickCount > 0 ) ? clickCount-- : ( clickCount = sCount - 1 );
-      }
-      TweenMax.to(sWrapper, 0.4, {x: '-' + ( sWidth * clickCount ) })
+<body>
+    <!-- Navbar Section Start-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand active" href="#">MUNTADHER-RG</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar Section End -->
+    <!-- Header Section Start -->
+    <header class="header">
+        <div class="text-box">
+            <h1 class="heading-primary">
+                <span class="heading-primary-main">MUNTADHER-RG </span>
+                <span class="heading-primary-sub">Web Developer ~ UI/UX Designer</span>
+            </h1>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <!-- About Me Section Start -->
+    <div id="about">
+        <div class="container">
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">Hi, am MUNYADHER . <span class="text-muted">A Web Developer.</span></h2>
+                    <p class="lead">Through coding i've acquired problem-solving skills and a way to communicate with others on a technical level. I'd love to work in a tech company, with artists, athletes, photographers, non-profits, and small businesses to improve
+                        their Web presence.
+                    </p>
+                    <blockquote>
+                        <p>Content is like water. You put water into a cup it becomes <strong>the cup</strong>. <br>You put water into a bottle it becomes <strong>the bottle</strong>. <br>You put it in a teapot, it becomes <strong>the teapot</strong>.<br><em>~ Bruce Lee</em>
+                        </p>
+                    </blockquote>
 
-
-      //CONTENT ANIMATIONS
-
-      var fromProperties = {autoAlpha:0, x:'-50', y:'-10'};
-      var toProperties = {autoAlpha:0.8, x:'0', y:'0'};
-
-      TweenLite.fromTo(slide_image, 1, {autoAlpha:0, y:'40'}, {autoAlpha:1, y:'0'});
-      TweenLite.fromTo(slide_date, 0.4, fromProperties, toProperties);
-      TweenLite.fromTo(slide_title, 0.6, fromProperties, toProperties);
-      TweenLite.fromTo(slide_text, 0.8, fromProperties, toProperties);
-      TweenLite.fromTo(slide_more, 1, fromProperties, toProperties);
-
-    });
-          
-  });
-})(jQuery);
-
-$('.overlay').addClass('overlay-blue');
-        </script>
-        <style>
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-body {background-color: #0D1B2B; overflow-x: hidden; font-family: roboto; -webkit-font-smoothing: antialiased; margin: 0;}
-.flex { display: -webkit-flex; display: flex; -webkit-flex-direction: row;  flex-direction: row; -webkit-justify-content: flex-start; justify-content: flex-start;}
-
-.slider-wrapper div {position: relative;}
-.slider-wrapper {margin-top: 5vw;  margin-left: 11vw;}
-.slide-image {height: 24vw;}
-.slide-image img {width: 24vw; cursor: pointer;}
-.slide-content {width: 25vw; color: #fff; padding:3vw 18vw 3vw 9vw;}
-.slide-date {color: #0a8acb; font-size: 1.1vw; font-weight: 400; letter-spacing: 0.1vw; padding-bottom: 1.4vw;}
-.slide-title {font-size: 1.2vw; font-weight: 400; letter-spacing: 0.1vw; line-height: 1.55vw; padding-bottom: 1.8vw;}
-.slide-text {font-size: 0.80vw; line-height: 1.2vw; opacity: 0.8; padding-bottom: 4vw;}
-.slide-more {font-weight: 400; letter-spacing: 0.1vw; float: left; font-size: 0.9vw;}
-.slide-bullet {width: 0.5vw; height: 0.5vw; background-color: #0b8bcc; border-radius: 200%; position: relative; margin-left: 1.2vw;}
-.slide-nav {margin-left: 64vw; margin-top: -5.5vw;}
-
-div.overlay-blue {width: 100%; height: 100%; position: absolute; top: 0; transition: 0.5s ease all;}
-div.overlay-blue:hover {background-color: rgba(13, 27, 43, 0.5);}
-
-.arrows{width: 3.5vw; margin-top: -5.8vw; margin-left: 72vw; position: relative;}
-.arrow {display: inline-block; position: absolute; width: 1.2vw; height: 1.2vw; background: transparent; text-indent: -9999px; border-top: 0.15vw solid #fff; border-left: 0.15vw solid #fff; transition: all .1s ease-in-out; text-decoration: none; color: transparent;
-}
-.arrow:hover {border-color: #0A8ACB; border-width: 0.25vw;
-}
-.arrow:before {display: block; height: 200%; width: 200%; margin-left: -50%; margin-top: -50%; content: ""; transform: rotate(45deg);}
-.arrow.prev {transform: rotate(-45deg); left: 0;}
-.arrow.next {transform: rotate(135deg); right: 0;}
-        </style>
-    </head>
-    <body>
-        <div class="slider">
-            <div class="slider-wrapper flex">
-                <div class="slide flex">
-                    <div class="slide-image slider-link prev"><img src="https://goranvrban.com/codepen/img2.jpg"><div class="overlay"></div></div>
-                    <div class="slide-content">
-                        <div class="slide-date">30.07.2017.</div>
-                        <div class="slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
-                        <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
-                        <div class="slide-more">READ MORE</div>
-                    </div>  
                 </div>
-                <div class="slide flex">
-                    <div class="slide-image slider-link next"><img src="https://goranvrban.com/codepen/img3.jpg"><div class="overlay"></div></div>
-                    <div class="slide-content">
-                        <div class="slide-date">30.08.2017.</div>
-                        <div class="slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
-                        <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
-                        <div class="slide-more">READ MORE</div>
-                    </div>  
-                </div>  
-                <div class="slide flex">
-                    <div class="slide-image slider-link next"><img src="https://goranvrban.com/codepen/img5.jpg"><div class="overlay"></div></div>
-                    <div class="slide-content">
-                        <div class="slide-date">30.09.2017.</div>
-                        <div class="slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
-                        <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
-                        <div class="slide-more">READ MORE</div>
-                    </div>  
-                </div>
-                    <div class="slide flex">
-                    <div class="slide-image slider-link next"><img src="https://goranvrban.com/codepen/img6.jpg"><div class="overlay"></div></div>
-                    <div class="slide-content">
-                        <div class="slide-date">30.10.2017.</div>
-                        <div class="slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
-                        <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
-                        <div class="slide-more">READ MORE</div>
-                    </div>  
+                <div class="col-md-5">
+                    <img class="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiij7ytwubaAhWBvBQKHXwxBtQQjRx6BAgBEAU&url=https%3A%2F%2Fgithub.com%2FChell0&psig=AOvVaw2GUUY9mxUw0YZqB52ike7W&ust=1525332959428917"
+                        alt="machel's smiling photo">
                 </div>
             </div>
-            <div class="arrows">
-            <a href="#" title="Previous" class="arrow slider-link prev"></a>
-            <a href="#" title="Next" class="arrow slider-link next"></a>
+        </div>
+    </div>
+    <!-- About Me Section End -->
+    <!-- My Portfolio Section Start -->
+    <div id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="project thumbnail">
+                        
+                            <img src="https://images.unsplash.com/photo-1457518919282-b199744eefd6?auto=format&fit=crop&w=1052&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="project thumbnail ">
+                        <a href="https://thimbleprojects.org/ch3ll0h/385389" target="_blank" title="Startup Landing Page">
+                            <img src="https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="project thumbnail ">
+                        <a href="https://thimbleprojects.org/ch3ll0h/385804" target="_blank" title="Photo Blog">
+                            <img src="https://images.unsplash.com/photo-1489900464632-5f5907edda24?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="project thumbnail">
+                      
+                            <img src="https://images.unsplash.com/photo-1507031774658-589130daf90c?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="project thumbnail">
+                        
+                            <img src="https://images.unsplash.com/photo-1502477639450-ccb7a6e7c391?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="project thumbnail ">
+                        
+                            <img src="https://images.unsplash.com/photo-1470165525439-3cf9e6dccbad?auto=format&fit=crop&w=1049&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+                        </a>
+                    </div>
+                </div>
+
             </div>
+        </div>
+    </div>
+    <!-- My Portfolio Section End -->
+
+    <!-- Footer Section Start -->
+    <footer>
+        <div id="footer-above">
+            <div>
+                <h3>Find me on</h3>
+                <ul id="contact">
+                    <li><a class="button social" href="https://codepen.io/muntdher-rg" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+                    <li><a class="button social" href="https://github.com/muntdher-rg" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+                    <li><a class="button social" href="https://twitter.com/muntader566" target="_blank"><i class="fa fa-fw fa-twitter"></i></a></li>
+                    <li><a class="button social" href="https://www.instagram.com/_.muntdher._/" target="_blank"><i class="fa fa-facebook-official"></i></a></li>
+                </ul>
             </div>
-    </body>
+        </div>
+        <div id="footer-below">Copyright &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script> MUNTADHER-RG.
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
 </html>
