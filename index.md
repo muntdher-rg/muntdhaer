@@ -11,6 +11,12 @@
 </head>
 
 <body> 
+    div class="loading">
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+</div>
     <!-- Navbar Section Start-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
