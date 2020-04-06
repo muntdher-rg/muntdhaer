@@ -9,14 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="portfolio.css">
 </head>
-
-<body> 
-    div class="loading">
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-</div>
+<body>
     <!-- Navbar Section Start-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
