@@ -119,6 +119,7 @@
 
     <!-- Footer Section Start -->
     <footer>
+    
         <div id="footer-above">
             <div>
                 <h3>Find me on</h3>
@@ -142,3 +143,4 @@
 </body>
 
 </html>
+.
