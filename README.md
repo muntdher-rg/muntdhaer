@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
     <head>
 <title>muntadhwe-rg</title>
