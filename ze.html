@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>blog</title>
+<meta name="description" content="Thoughts, reviews and ideas since 1999."/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+	$black: #111;
+$white: #fff;
+$pink: #ff1ead;
+$dark-pink: #e40091;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(255, 235, 120);
+}
+
+#sushi-header {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  text-align: center;
+  background: url(xc.jpg)
+    no-repeat;
+  background-size: cover;
+}
+
+#sushi-header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.sushi-header__header {
+  position: relative;
+  font: 700 3.5em "Roboto";
+  text-transform: uppercase;
+  line-height: 200px;
+  color: #fff;
+}
+
+#sushi-menu {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+/* Sushi Gallery */
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0;
+  grid-auto-rows: auto;
+  max-width: 950px;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.card {
+  position: relative;
+  top: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  background: rgb(255, 255, 255);
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 45px;
+  margin: 10px;
+  transition: all 0.2s ease-in-out;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.card:hover {
+  top: -5px;
+  box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: $black;
+  color: $white;
+  border-radius: 5px;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  
+    
+}
+
+.card-back-contents h1 {
+  font: 700 24px "Overpass";
+  top: 100px;
+}
+
+.undo-btn {
+  position: relative;
+  padding: 14px 42px;
+  border: 0 none;
+  outline: none;
+  border-radius: 50px;
+  background: $pink;
+  font: 700 12px "Overpass";
+  color: $white;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 150ms ease-in-out;
+
+}
+
+
+
+.dollar-amount {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  color: #ababab;
+  font: 700 16px "Roboto";
+
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.card-header {
+  font: 700 16px "Roboto";
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.card-description {
+  font: 300 14px "Roboto";
+  text-align: left;
+  line-height: 20px;
+}
+
+.order-now {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 14px 22px;
+  margin-top: 25px;
+  border: 0 none;
+  outline: none;
+  border-radius: 50px;
+  background: $pink;
+  font: 700 12px "Overpass";
+  color: #black;
+  text-transform: uppercase;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all 150ms ease-in-out;
+
+  &:hover {
+    background: $dark-pink;
+  }
+}
+
+img {
+  width: 125px;
+  height: 125px;
+  margin-bottom: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Lightbox section */
+img.mfp-img {
+  height: 500px;
+  width: 500px;
+  padding: 150px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+img.mfp-img:hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mfp-figure:after {
+  border-radius: 50%;
+}
+
+.mfp-counter {
+  display: none;
+}
+
+.mfp-title {
+  font: 700 26px "Roboto";
+  color: #000;
+  text-align: center;
+  padding-right: 0;
+  position: relative;
+  bottom: 375px;
+}
+
+/* Media queries */
+@media (max-width: 660px) {
+  #gallery {
+    grid-template-columns: repeat(1, 1fr);
+    display: block;
+    max-width: 300px;
+  }
+}
+@media (max-width: 965px) {
+  #gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .sushi-header__header {
+    font-size: 2em;
+  }
+}
+
+</style>
+<script>
+	$(".image").magnificPopup({
+  type: "image",
+  removalDelay: 300,
+
+  gallery: {
+    enabled: true,
+    preload: [0, 2]
+  }
+});
+
+$(document).ready(function() {
+  var $orderNowBtn = $(".order-now");
+  var $card = $(".card");
+  var $flipTheCard = $(".card-active");
+  var $undoBtn = $(".undo-btn");
+
+  $orderNowBtn.on("click", function() {
+    $(this).parent($card).css("transform", "rotateY(180deg)");
+  });
+  
+  $undoBtn.on("click", function() {
+    $(this).parent($card).css("transform", "rotateY(180deg)");
+    
+    console.log('hi');
+  });
+});
+</script>
+</head>
+<body>
+	<section id="sushi-header">
+		<div class="sushi-header__header">blog</div>
+	  </section>
+	  
+	  <section id="sushi-menu">
+	  
+		<ul id="gallery">
+	  
+		  <li class="card">
+			<div class="dollar-amount">1</div>
+			<a target="" href="http://media1.popsugar-assets.com/files/2014/02/18/159/n/28443503/5945b74bba9e1117_shutterstock_105361820.jpg.xxxlarge/i/Salmon-Avocado-Sushi-Roll.jpg" class="image" title="SLAMMIN' SALMON"><img src="nm.jpg" ></a>
+			<h3 class="card-header">the life</h3>
+			<p class="card-description">“I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me
+			</p>
+			<button class="order-now">read more</button>
+	  
+			<div class="card-back">
+			  <div class="card-back-contents">
+				<h1>Added to Cart</h1>
+				<button class="undo-btn">Undo</button>
+			  </div>
+			</div>
+		  </li>
+	  
+		  <li class="card">
+			<div class="dollar-amount">2</div>
+			<a target="" href="http://www.natures-health-foods.com/images/Sushi-RollTuna.jpg" class="image" title="TUNA LAGUNA"><img src="jj.jpeg" ></a>
+			<h3 class="card-header">Book interface</h3>
+			<p class="card-description">“It's so hard to forget pain, but it's even harder to remember sweetness. We have no scar to show for happiness. We learn so little from peace.”</p>
+			<button class="order-now">read more</button>
+	  
+			<div class="card-back">
+			  <div class="card-back-contents">
+				<h1>Added to Cart</h1>
+				<button class="undo-btn">Undo</button>
+			  </div>
+			</div>
+		  </li>
+	  
+		  <li class="card">
+			<div class="dollar-amount">3</div>
+			<a target="" href="http://www.natures-health-foods.com/images/Sushi-RollSalmonAvacado.jpg" class="image" title="NO FAMINE SALMON"><img src="vb.jpg"></a>
+			<h3 class="card-header">Nowhere</h3>
+			<p class="card-description">And because life surrenders to death in the end, there is no need to search for reasons for prolonging life, and let us surrender quietly to the reality of death .. and then inevitably we will find our way to rest.  Or maybe she finds her way to us!  ...</p>
+			<button class="order-now">read more</button>
+	  
+			<div class="card-back">
+			  <div class="card-back-contents">
+				<h1>Added to Cart</h1>
+				<button class="undo-btn">Undo</button>
+			  </div>
+			</div>
+		  </li>
+	  
+		  <li class="card">
+			<div class="dollar-amount">4</div>
+			<a target="" href="http://www.megumistbarth.com/54-large_default/megumi-st-barth-sushi-california-ebi-shrimp-cucumber-scallion-mayonnaise-sesame-seeds.jpg" class="image" title="LAVA AVOCADO"><img src="cc.jpg"></a>
+			<h3 class="card-header">stars pink</h3>
+			<p class="card-description">“[...]the only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars and in the middle you see the blue centerlight pop and everybody goes “Awww!”..</p>
+			<button class="order-now">read more</button>
+	  
+			<div class="card-back">
+			  <div class="card-back-contents">
+				<h1>Added to Cart</h1>
+				<button class="undo-btn">Undo</button>
+			  </div>
+			</div>
+		  </li>
+	  
+		  <li class="card">
+			<div class="dollar-amount">5</div>
+			<a target="" href="http://pngimg.com/uploads/sushi/sushi_PNG9266.png" class="image" title="CRUCIAL TAUNT"><img src="rg.gif"></a>
+			<h3 class="card-header">The small details</h3>
+			<p class="card-description">“The small details of life often hide a great significance.”.</p>
+			<button class="order-now">read more</button>
+	  
+			<div class="card-back">
+			  <div class="card-back-contents">
+				<h1>Added to Cart</h1>
+				<button class="undo-btn">Undo</button>
+			  </div>
+			</div>
+		  </li>
+	  
+		  <li class="card">
+			<div class="dollar-amount">6</div>
+			<a target="" href="https://www.mysushishop.co.uk/product-5500-400x400/cooked-tuna-avocado-california.png" class="image" title="POWER ROLL"><img src="xy.jpg"></a>
+			<h3 class="card-header">He believed</h3>
+			<p class="card-description">“He believed he was celebrating them when he shared stories of their foibles. He felt the burden of being their living witness. Somehow the silliest details of their days were, to him, sacred. And he believed that if only the dominant culture could see these small moments, they would see their own human lives reflected in the other.”.</p>
+			<button class="order-now">Order Now</button>
+	  
+			<div class="card-back">
+			  <div class="card-back-contents">
+				<h1>Added to Cart</h1>
+				<button class="undo-btn">Undo</button>
+			  </div>
+			</div>
+		  </li>
+	  
+		</ul>
+	  </section>
+	  
+	  </section>	
+</body>
+
+</html>
