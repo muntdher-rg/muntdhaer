@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+<meta charset="UTF-8">
+        <style>
+html{
+    background-color: #fff567;
+    color: #5a5a5a;
+}
+
+.main_h {
+    position: fixed;
+    top: 0px;
+    max-height: 70px;
+    z-index: 999;
+    width: 100%;
+    padding-top: 17px;
+    background: none;
+    overflow: hidden;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    opacity: 0;
+    top: -100px;
+    padding-bottom: 6px;
+    font-family: "Montserrat", sans-serif;
+  }
+  @media only screen and (max-width: 766px) {
+    .main_h {
+      padding-top: 25px;
+    }
+  }
+  
+  .open-nav {
+    max-height: 400px !important;
+  }
+  .open-nav .mobile-toggle {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+  }
+  
+  .sticky {
+    background-color: rgba(22, 21, 21, 0.93);
+    opacity: 1;
+    top: 0px;
+    border-bottom: 1px solid rgb(10, 10, 10);
+  }
+  
+  .logo {
+    width: 50px;
+    font-size: 25px;
+    color: #8f8f8f;
+    text-transform: uppercase;
+    float: left;
+    display: block;
+    margin-top: 0;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  @media only screen and (max-width: 766px) {
+    .logo {
+      float: none;
+    }
+  }
+  
+  nav {
+    float: right;
+    width: 60%;
+  }
+  @media only screen and (max-width: 766px) {
+    nav {
+      width: 100%;
+    }
+  }
+  nav ul {
+    list-style: none;
+    overflow: hidden;
+    text-align: right;
+    float: right;
+  }
+  @media only screen and (max-width: 766px) {
+    nav ul {
+      padding-top: 10px;
+      margin-bottom: 22px;
+      float: left;
+      text-align: center;
+      width: 100%;
+    }
+  }
+  nav ul li {
+    display: inline-block;
+    margin-left: 35px;
+    line-height: 1.5;
+  }
+  @media only screen and (max-width: 766px) {
+    nav ul li {
+      width: 100%;
+      padding: 7px 0;
+      margin: 0;
+    }
+  }
+  nav ul a {
+    color: #888888;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  
+  .mobile-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    right: 22px;
+    top: 0;
+    width: 30px;
+    -webkit-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    transition: all 200ms ease-in;
+  }
+  @media only screen and (max-width: 766px) {
+    .mobile-toggle {
+      display: block;
+    }
+  }
+  .mobile-toggle span {
+    width: 30px;
+    height: 4px;
+    margin-bottom: 6px;
+    border-radius: 1000px;
+    background: #8f8f8f;
+    display: block;
+  }
+  
+  .row {
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 2%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    color: #8f8f8f;
+    background: white;
+    font-family: "Cardo", serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  h1 {
+    font-size: 30px;
+    line-height: 1.8;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  p {
+    margin-bottom: 20px;
+    font-size: 17px;
+    line-height: 2;
+  }
+  
+  .content {
+    padding: 50px 2% 250px;
+  }
+  
+  .hero {
+    position: relative;
+    background: url(ss.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+    padding-top: 110px;
+    min-height: 500px;
+    letter-spacing: 2px;
+    font-family: "Montserrat", sans-serif;
+  }
+  .hero h1 {
+    font-size: 50px;
+    line-height: 1.3;
+  }
+  .hero h1 span {
+    font-size: 25px;
+    color: #e8f380;
+    border-bottom: 2px solid #e8f380;
+    padding-bottom: 12px;
+    line-height: 3;
+  }
+  
+  .mouse {
+    display: block;
+    margin: 0 auto;
+    width: 26px;
+    height: 46px;
+    border-radius: 13px;
+    border: 2px solid #e8f380;
+    position: absolute;
+    bottom: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -26px;
+  }
+  .mouse span {
+    display: block;
+    margin: 6px auto;
+    width: 2px;
+    height: 2px;
+    border-radius: 4px;
+    background: #e8f380;
+    border: 1px solid transparent;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: scroll;
+    animation-name: scroll;
+  }
+  
+  @-webkit-keyframes scroll {
+    0% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  
+    100% {
+      opacity: 0;
+      -webkit-transform: translateY(20px);
+      transform: translateY(20px);
+    }
+  }
+  @keyframes scroll {
+    0% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+  
+    100% {
+      opacity: 0;
+      -webkit-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+      transform: translateY(20px);
+    }
+  }
+
+  
+  /*********** About Me Section Start ********/
+
+#about {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #5a5a5a;
+    background-image: linear-gradient( to left top, rgba(13, 12, 15, 0.8), rgba(36, 32, 32, 0.8)), url(xy.jpg);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+    .featurette-heading {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 992px) {
+    .featurette-heading {
+        margin-top: 120px;
+    }
+}
+
+.img-responsive {
+    border-radius: 100px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/*********** About Me Section End **********/
+
+
+
+
+        </style>
+        <script>
+        
+
+            // Sticky Header
+$(window).scroll(function() {
+
+if ($(window).scrollTop() > 100) {
+    $('.main_h').addClass('sticky');
+} else {
+    $('.main_h').removeClass('sticky');
+}
+});
+
+// Mobile Navigation
+$('.mobile-toggle').click(function() {
+if ($('.main_h').hasClass('open-nav')) {
+    $('.main_h').removeClass('open-nav');
+} else {
+    $('.main_h').addClass('open-nav');
+}
+});
+
+$('.main_h li a').click(function() {
+if ($('.main_h').hasClass('open-nav')) {
+    $('.navigation').removeClass('open-nav');
+    $('.main_h').removeClass('open-nav');
+}
+});
+
+// navigation scroll lijepo radi materem
+$('nav a').click(function(event) {
+var id = $(this).attr("href");
+var offset = 70;
+var target = $(id).offset().top - offset;
+$('html, body').animate({
+    scrollTop: target
+}, 500);
+event.preventDefault();
+});
+        </script>
+
+    </head>
+    <body>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat|Cardo' rel='stylesheet' type='text/css'>
+
+
+
+  
+<header class="main_h">
+
+    <div class="row">
+        <a class="logo" href="#">P/F</a>
+
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href=".home">home</a></li>
+                <li><a href=".about">about</a></li>
+                <li><a href=".conact">conact</a></li>
+                <li><a href=".find">find</a></li>
+            </ul>
+        </nav>
+
+    </div> <!-- / row -->
+
+</header>
+
+<div class="hero">
+<img src="bc.jpg">
+    <h1><span>mr-rg</span><br>القوةالغاشمة</h1>
+
+    <div class="mouse">
+        <span></span>
+    </div>
+
+</div>
+
+<div class="row content">
+    <h1 class="sec01">“ The Paradoxical Commandments
+    </h1>
+    <p>“ The Paradoxical Commandments
+
+        People are illogical, unreasonable, and self-centered.
+        Love them anyway.
+        
+        If you do good, people will accuse you of selfish ulterior motives.
+        Do good anyway.
+        
+        If you are successful, you will win false friends and true enemies.
+        Succeed anyway.
+        
+        The good you do today will be forgotten tomorrow.
+        Do good anyway.
+        
+        Honesty and frankness make you vulnerable.
+        Be honest and frank anyway.
+        
+        The biggest men and women with the biggest ideas can be shot down by the smallest men and women with the smallest minds.
+        Think big anyway.
+        
+        People favor underdogs but follow only top dogs.
+        Fight for a few underdogs anyway.
+        
+        What you spend years building may be destroyed overnight.
+        Build anyway.
+        
+        People really need help but may attack you if you do help them.
+        Help people anyway.
+        
+        Give the world the best you have and you'll get kicked in the teeth.
+        Give the world the best you have anyway.”.</p>
+    <h1 class="sec02">Do not give up</h1>
+      <img src="lk.png" width="400" height="300">
+    <p>“When adults say, "Teenagers think they are invincible" with that sly, stupid smile on their faces, they don't know how right they are. We need never be hopeless, because we can never be irreparably broken. We think that we are invincible because we are. We cannot be born, and we cannot die. Like all energy, we can only change shapes and sizes and manifestations. They forget that when they get old. They get scared of losing and failing. But that part of us greater than the sum of our parts cannot begin and cannot end, and so it cannot fail.”.</p>
+    <h1 class="sec03"> the demn time</h1>
+    
+    
+    <p>.“Unfortunately, the clock is ticking, the hours are going by. The past increases, the future recedes. Possibilities decreasing, regrets mounting.”
+        ― Haruki Murakami, Dance Dance Dance</p>
+          <img src="Ho.jpg">
+    <h1 class="sec04">“livid</h1>
+    <p>“livid, adj.
+
+        Fuck You for cheating on me. Fuck you for reducing it to the word cheating. As if this were a card game, and you sneaked a look at my hand. Who came up with the term cheating, anyway? A cheater, I imagine. Someone who thought liar was too harsh. Someone who thought devastator was too emotional. The same person who thought, oops, he’d gotten caught with his hand in the cookie jar. Fuck you. This isn’t about slipping yourself an extra twenty dollars of Monopoly money. These are our lives. You went and broke our lives. You are so much worse than a cheater. You killed something. And you killed it when its back was turned.”
+        ― David Levithan, The Lover's Dictionary.</p>
+        <img src="rg.gif">
+        
+</div>
+
+    </body>
+</html>
